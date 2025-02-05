@@ -1,52 +1,24 @@
-export class StockItem {
-    public id: number;
-    public name: string;
-    private quantity: number;
-    private unit: string;
-    private threshold: number;
+export default class {
+    constructor(
+        public id: string,
+        public name: string,
+        public quantity: number,
+        public unit: string,
+        public threshold: number
+    ) { }
 
-    public constructor(
-        id: number,
-        name: string,
-        quantity: number,
-        unit: string,
-        threshold: number,
-    ) {
-        this.id = id;
-        this.name = name;
-        this.quantity = quantity;
-        this.unit = unit;
-        this.threshold = threshold;
+    addStock(amount: number): void {
+        if (amount < 0) throw new Error("Cannot add negative stock");
+        this.quantity += amount;
     }
 
-    public isBellowThreshold(): boolean {
-        return this.quantity <= this.threshold;
+    removeStock(amount: number): void {
+        if (amount < 0) throw new Error("Cannot remove negative stock");
+        if (this.quantity < amount) throw new Error("Insufficient stock");
+        this.quantity -= amount;
     }
 
-    // setters
-    public setQuantity(quantity: number): void {
-        this.quantity = quantity;
+    isBelowThreshold(): boolean {
+        return this.quantity < this.threshold;
     }
-
-    public setUnit(unit: string): void {
-        this.unit = unit;
-    }
-
-    public setThreshold(threshold: number): void {
-        this.threshold = threshold;
-    }
-
-    // getters
-    public getQuantity(): number {
-        return this.quantity;
-    }
-
-    public getUnit(): string {
-        return this.unit;
-    }
-
-    public getThreshold(): number {
-        return this.threshold;
-    }
-
 }
