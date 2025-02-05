@@ -1,17 +1,31 @@
 import { app, BrowserWindow } from 'electron';
-import path from 'path';
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 800,
+    frame: true,
+    fullscreen: false,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
 
-  mainWindow.loadFile(path.join(app.getAppPath(), '/distReact/index.html'));
+  mainWindow.maximize();
+  mainWindow.loadURL('http://localhost:5173');
 }
 
-app.on('ready', createWindow);
+app.whenReady().then(createWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});
