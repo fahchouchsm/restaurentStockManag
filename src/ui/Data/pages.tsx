@@ -1,4 +1,10 @@
-import { Home } from 'lucide-react';
+import {
+  Home,
+  MessageSquareWarning,
+  Package,
+  ReceiptText,
+  Salad,
+} from 'lucide-react';
 
 interface pageUi {
   name: string;
@@ -7,10 +13,10 @@ interface pageUi {
 }
 
 // Accueil
-// Stocks
+// Gestion des stocks
 // Repas
-// Commandes
-// Paramètres
+// Transactions
+// Alertes
 
 export const pages: pageUi[] = [
   {
@@ -19,23 +25,23 @@ export const pages: pageUi[] = [
     icon: <Home />,
   },
   {
-    name: 'Stocks',
+    name: 'Gestion des stocks',
     url: '/inventory',
-    icon: <Home />,
+    icon: <Package />,
   },
   {
     name: 'Repas',
     url: '/meals',
-    icon: <Home />,
+    icon: <Salad />,
   },
   {
-    name: 'Commandes',
-    url: '/orders',
-    icon: <Home />,
+    name: 'Transactions',
+    url: '/transactions',
+    icon: <ReceiptText />,
   },
   {
-    name: 'Paramètres',
-    url: '/settings',
-    icon: <Home />,
+    name: 'Alertes',
+    url: '/alerts',
+    icon: <MessageSquareWarning />,
   },
 ];

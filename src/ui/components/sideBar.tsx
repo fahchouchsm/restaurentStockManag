@@ -1,4 +1,6 @@
 import React from 'react';
+import company from '../Data/companyData';
+import { pages } from '../Data/pages';
 
 export interface pageUi {
   name: string;
@@ -7,23 +9,25 @@ export interface pageUi {
 
 const SideBar: React.FC = () => {
   return (
-    <div className="sidebar">
-      <h2>Menu</h2>
-      <ul>
-        <li>
-          <a href="/dashboard">Dashboard</a>
-        </li>
-        <li>
-          <a href="/inventory">Inventory</a>
-        </li>
-        <li>
-          <a href="/orders">Orders</a>
-        </li>
-        <li>
-          <a href="/settings">Settings</a>
-        </li>
+    <nav className="bg-gray-700 w-3/12  h-screen text-white flex flex-col ">
+      <h2 className="font-extrabold  text-4xl my-10 mx-auto ">
+        {company.name}
+      </h2>
+      <ul className="flex flex-col gap-4 lg:text-xl xl:text-2xl justify-center px-2">
+        {pages.map((page, i) => {
+          return (
+            <li key={i}>
+              <a href={page.url}>
+                <div className="flex gap-4 hover:bg-gray-600 pb-2 pt-2.5 px-3 rounded-xl transition duration-300 ease-in-out">
+                  <div className="">{page.icon}</div>
+                  <div className="-translate-y-1">{page.name}</div>
+                </div>
+              </a>
+            </li>
+          );
+        })}
       </ul>
-    </div>
+    </nav>
   );
 };
 

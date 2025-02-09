@@ -1,7 +1,7 @@
-import { Meal } from "./meal";
-import stockItem from "./stockItem";
-import { StockReport } from "./stockReport";
-import { StockTransaction } from "./stockTransaction";
+import { Meal } from "./meal.js";
+import stockItem from "./stockItem.js";
+import { StockReport } from "./stockReport.js";
+import { StockTransaction } from "./stockTransaction.js";
 
 export class StockManager {
     private stockItems: Map<string, stockItem> = new Map();

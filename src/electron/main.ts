@@ -1,7 +1,10 @@
 import { app, BrowserWindow } from 'electron';
+import path from 'path';
+
+let mainWindow: BrowserWindow | null = null;
 
 function createWindow() {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1280,
     height: 800,
     frame: true,
@@ -9,6 +12,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      preload: path.join(new URL(import.meta.url).pathname, 'preload.js'),
     },
   });
 

@@ -1,16 +1,11 @@
-import './App.css';
+import SideBar from './components/sideBar';
 
 function App() {
   return (
     <>
-      <button
-        onClick={() => {
-          console.log('full');
-          window.Electron.ipcRenderer.send('action', 'fullScreen');
-        }}
-      >
-        hello world
-      </button>
+      <div className="">
+        <SideBar />
+      </div>
     </>
   );
 }

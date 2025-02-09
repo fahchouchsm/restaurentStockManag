@@ -1,4 +1,4 @@
-import { StockManager } from "./stockManager";
+import { StockManager } from "./stockManager.js";
 
 
 
